@@ -45,3 +45,15 @@ for row in matrix:
     for elem in row:
         summ += elem
 print(summ)
+
+# 5. Найти индекс ряда с максимальной суммой элементов.
+max_row_sum = None
+max_row_sum_index = None
+for i in range(n):
+    row_sum = 0
+    for j in range(m):
+        row_sum += matrix[i][j]
+    if max_row_sum is None or max_row_sum < row_sum:
+        max_row_sum = row_sum
+        max_row_sum_index = i
+print(max_row_sum_index)

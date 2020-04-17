@@ -22,3 +22,11 @@ for i in range(n):
         row.append(randint(a, b))
     matrix.append(row)
 print(matrix)
+
+# 2. Найти максимальный элемент матрицы.
+max_elem = matrix[0][0]
+for row in matrix:
+    for elem in row:
+        if elem > max_elem:
+            max_elem = elem
+print(max_elem)

@@ -30,3 +30,11 @@ for row in matrix:
         if elem > max_elem:
             max_elem = elem
 print(max_elem)
+
+# 3. Найти минимальный минимальный матрицы.
+min_elem = matrix[0][0]
+for row in matrix:
+    for elem in row:
+        if elem < min_elem:
+            min_elem = elem
+print(min_elem)

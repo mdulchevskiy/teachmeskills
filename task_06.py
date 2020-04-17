@@ -107,3 +107,20 @@ for i in range(n):
         if i > j:
             matrix[i][j] = 0
 print(matrix)
+
+# 11. Создать две новые матрицы matrix_a, matrix_b случайных чисел размерностью n*m.
+matrix_a = []
+for i in range(n):
+    row = []
+    for j in range(m):
+        row.append(randint(a, b))
+    matrix_a.append(row)
+print(matrix_a)
+
+matrix_b = []
+for i in range(n):
+    row = []
+    for j in range(m):
+        row.append(randint(a, b))
+    matrix_b.append(row)
+print(matrix_b)

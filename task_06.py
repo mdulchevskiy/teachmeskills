@@ -38,3 +38,10 @@ for row in matrix:
         if elem < min_elem:
             min_elem = elem
 print(min_elem)
+
+# 4. Найти сумму всех элементов матрицы.
+summ = 0
+for row in matrix:
+    for elem in row:
+        summ += elem
+print(summ)

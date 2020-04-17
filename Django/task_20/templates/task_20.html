@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+    task_20
+{% endblock %}
+
+{% block content %}
+    {%  if errors %}
+        {{ errors }}
+    {%  endif %}
+
+    <form method="POST" action={% url "aviasales" %}>
+        {{  form.as_p  }}
+        <input type="submit" value="Send">
+    </form>
+{% endblock %}

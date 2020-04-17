@@ -50,7 +50,7 @@ python manage.py migrate shortener
 ```
 python manage.py runserver
 ```
-# Running the tests
+## Running the tests
 ```
 python manage.py test shortener
 ```

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+    work_20_03
+{% endblock %}
+
+{% block content %}
+    {% if errors %}
+        {{ errors }}
+    {% endif %}
+
+    <form action={% url 'w4' %} method="POST">
+        {{ form.as_p }}
+        <input type="submit" value="Send"/>
+    </form>
+{% endblock %}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>work_20_01</title>
+</head>
+<body>
+    {% if errors %}
+        {{ errors }}
+    {% endif %}
+
+    <form action="http://127.0.0.1:8000/w20/w1" method="POST">
+        <input type="text" name="name" placeholder="Name"/><br>
+        <input type="text" name="surname" placeholder="Surname"/><br>
+        <input type="text" name="age" placeholder="Age"/><br>
+        <textarea name="comment" placeholder="Comment"></textarea>
+        <input type="submit" value="Send"/>
+    </form>
+</body>
+</html>

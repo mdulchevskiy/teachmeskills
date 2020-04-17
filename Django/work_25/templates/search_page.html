@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Work 25
+{% endblock %}
+
+{% block content %}
+    <table style="width: 100%;">
+        <tr>
+            <th>URL</th>
+            <th>Species</th>
+            <th>Created</th>
+            <th>Type</th>
+        </tr>
+        {% for animal in animals %}
+            <tr>
+                <td><a href="{{ animal.url }}">{{ animal.url }}</a></td>
+                <td>{{ animal.species }}</td>
+                <td>{{ animal.created }}</td>
+                <td>{{ animal.type }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <form action={% url 'home_page' %} method="get">
+        {% csrf_token %}
+        <input type="submit" value="Go Home">
+    </form>
+{% endblock %}

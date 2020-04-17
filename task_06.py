@@ -57,3 +57,15 @@ for i in range(n):
         max_row_sum = row_sum
         max_row_sum_index = i
 print(max_row_sum_index)
+
+# 6. Найти индекс колонки с максимальной суммой элементов.
+max_column_sum = None
+max_column_sum_index = None
+for j in range(m):
+    column_sum = 0
+    for i in range(n):
+        column_sum += matrix[i][j]
+    if max_column_sum is None or max_column_sum < column_sum:
+        max_column_sum = column_sum
+        max_column_sum_index = j
+print(max_column_sum_index)

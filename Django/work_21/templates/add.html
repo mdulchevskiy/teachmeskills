@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} Task {% endblock %}
+
+{% block content %}
+    {%  if errors %}
+        {{ errors }}
+    {%  endif %}
+
+    <form method="POST" action={% url "add_customer" %}>
+        {{  form.as_p  }}
+        <input type="submit" value="Send">
+    </form>
+{% endblock %}

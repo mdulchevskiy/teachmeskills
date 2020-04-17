@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %} ToDo List {% endblock %}
+
+{% block style %}
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 2px solid white;
+        }
+        td, th {
+            padding: 3px;
+            border: 1px solid black;
+        }
+        h1 {
+            margin-bottom: 5px;
+        }
+        hr {
+            height: 2px;
+            border-color: black;
+        }
+        .col1 {
+            width: 300px;
+            text-align: center;
+        }
+        .col2 {
+            width: 70px;
+            text-align: center;
+        }
+        .col3 {
+            width: 90px;
+            text-align: center;
+        }
+        .col4 {
+            width: 100px;
+            text-align: center;
+        }
+        .pr1 {background: #F08080;}
+        .pr2 {background: #FFFACD;}
+        .pr3 {background: #90EE90;}
+        .done {background: #FFFFFF;}
+    </style>
+{% endblock %}
+
+{% block body %}
+    <form>
+        <p><button formaction="{% url 'add_activity' %}" style="margin-bottom: 20px">Add activity</button></p>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="col1">What To Do</th>
+                <th class="col2">Status</th>
+                <th class="col3">Moving</th>
+                <th class="col4">E. D.</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for activity in activities %}
+                {% if activity.priority == 1 %} <tr class="pr1">
+                {% elif activity.priority == 2 %} <tr class="pr2">
+                {% elif activity.priority == 3 %} <tr class="pr3">
+                {% endif %}
+                {% if activity.status == 1 %} <tr class="done">
+                {% endif %}
+                    <td>{{ activity.activity }}</td>
+                    <td>
+                        <form method="POST" action="{% url 'edit_status' activity.id %}">
+                            {% if activity.status == 0 %} <input type="checkbox" name="status" value='1'>
+                            {% elif activity.status == 1 %} <input type="checkbox" name="status" value='1' checked="checked">
+                            {% endif %}
+                            <input type="submit" value="Upd.">
+                        </form>
+                    </td>
+                    <td>
+                        <form method="GET">
+                            <button formaction="{% url 'up_activity' activity.id %}">Up</button>
+                            <button formaction="{% url 'down_activity' activity.id %}">Down</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="GET">
+                            <button formaction="{% url 'edit_activity' activity.id %}">Edit</button>
+                            <button formaction="{% url 'delete_activity' activity.id %}">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form method="POST" action="{% url 'filter_activities' %}" style="margin-top: 20px; margin-bottom: 20px">
+        <select name="choice">
+            <option value=0>---</option>
+            <option value=1>High</option>
+            <option value=2>Mid</option>
+            <option value=3>Low</option>
+        </select>
+        <input type="submit" value="Show">
+    </form>
+
+    {% if filtered_activities %}
+        <table>
+            <thead>
+                <tr>
+                    <th class="col1">What To Do (priority level {{ filtered_activities.first.priority }})</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for filtered_activity in filtered_activities %}
+                    <tr>
+                        <td>{{ filtered_activity.activity }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}

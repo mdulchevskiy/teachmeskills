@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %} Edit activity {% endblock %}
+
+{% block style %}
+    <style>
+        h1 {
+            margin-bottom: 5px;
+        }
+        hr {
+            height: 2px;
+            border-color: black;
+        }
+        form {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <span style="color: red">
+        {% if errors %}
+            {{ errors }}
+        {% endif %}
+    </span>
+
+    <form method="POST" action="{% url 'edit_activity' activity_id %}" novalidate>
+        {{ form.as_myp }}
+        <input type="submit" value="Confirm">
+        <button formaction="{% url 'home_page' %}">Cancel</button>
+    </form>
+    <hr>
+{% endblock %}

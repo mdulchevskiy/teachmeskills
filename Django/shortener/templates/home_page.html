@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %} URL Shortener {% endblock %}
+
+{% block style %}
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 2px solid white;
+        }
+        td, th {
+            padding: 3px;
+            border: 1px solid black;
+        }
+        h1 {
+            margin-bottom: 5px;
+        }
+        hr {
+            height: 2px;
+            border-color: black;
+        }
+        .col2 {
+            width: 200px;
+            text-align: center;
+        }
+        .col3 {
+            width: 170px;
+            text-align: center;
+        }
+        .col4 {
+            width: 50px;
+            text-align: center;
+        }
+        .col5 {
+            text-align: center;
+        }
+        .clicks {
+            text-align: center;
+        }
+        .message {
+            border: none;
+            background-color: red;
+            color: red;
+            height: 2px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h3 style="margin-top: 50px; margin-bottom: 5px">Shorten your link</h3>
+    <form method="POST" action="{% url 'home_page' %}" novalidate style="margin-bottom: 50px">
+        {{ form.as_myp}}
+        <input type="submit" value="Shorten">
+    </form>
+
+    {% if message or errors %}
+        <font size="3" color="red">{{ message }}</font><br>
+    {% endif %}
+    <hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th class="col2">Short URL</th>
+                <th class="col3">Date</th>
+                <th class="col4">Clicks</th>
+                <th class="col5">Long URL</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for url in urls %}
+                <tr>
+                    <td>
+                        <form method="GET">
+                            <button formaction="{% url 'delete_url' url.id %}">Delete</button>
+                        </form>
+                    </td>
+                    <td><a href="{% url 'redirect_url' url.short_url %}">http://127.0.0.1:8000/{{ url.short_url }}</a></td>
+                    <td>{{ url.date }}</td>
+                    <td class="clicks">{{ url.clicks }}</td>
+                    <td>{{ url.long_url }}</td>
+                 </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add product</title>
+</head>
+<body>
+    <h3>Products</h3>
+
+    {%- for category, message in get_flashed_messages(with_categories = true) %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {%- endfor %}
+    </p>
+
+    <form action="{{ request.path }}" method="post">
+        <label for="name">Name</label><br>
+        <input type="text" name="name" placeholder="Name"/><br>
+        <label for="price">Price</label><br>
+        <input type="text" name="price" placeholder="0"/><br>
+        <label for="amount">Amount</label><br>
+        <input type="number" name="amount" placeholder="0"/><br>
+        <label for="comment">Comment</label><br>
+        <textarea name="comment" placeholder="product comment"></textarea><br>
+        <input type="submit" value="Save"/>
+    </form>
+</body>
+</html>

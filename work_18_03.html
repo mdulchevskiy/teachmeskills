@@ -1,0 +1,28 @@
+<!--Создать форму по отправке обратной связи на сайте.-->
+<!--Необходимые поля: имя, фамилия, отчество, возраст-->
+<!--комментарий-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+   <form method="POST" action="http://127.0.0.1:8000/give_me_answer/">
+       <p>Insert your name</p>
+       <input type="text" name='author_name'><br>
+       <p>Insert your surname</p>
+       <input type="text" name='author_surname'><br>
+       <p>Insert your second name</p>
+       <input type="text" name='author_second_name'><br>
+       <p>Insert your age</p>
+       <input type="number" name='author_age'><br>
+       <p>Commet</p>
+       <textarea name="comment" cols="40" rows="3"></textarea></p>
+       <input type="submit" value="Send">
+       <input type="reset" value="Clear"></p>
+   </form>
+</body>
+</html>

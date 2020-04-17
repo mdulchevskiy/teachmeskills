@@ -8,11 +8,13 @@ if DEBUG:
     m = 5
     a = 0
     b = 9
+    g = 5
 else:
     n = input('Enter n: ')
     m = input('Enter m: ')
     a = input('Enter a: ')
     b = input('Enter b: ')
+    g = input('Enter g: ')
 
 # 1. Создать матрицу случайных чисел от a до b, размерность матрицы n*m.
 matrix = []
@@ -142,3 +144,11 @@ for i in range(n):
         row.append(matrix_a[i][j] - matrix_b[i][j])
     diff_matrix.append(row)
 print(diff_matrix)
+
+# 14. Создать новую матрицу равную matrix_a умноженной на g. g вводится с клавиатуры.
+mult_matrix = []
+for i in range(n):
+    row = []
+    for j in range(m):
+        row.append(matrix_a[i][j] * g)
+    mult_matrix.append(row)

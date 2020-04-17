@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Send message
+{% endblock %}
+
+{% block content %}
+    <form action={% url "send_email" %} method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Send">
+    </form>
+
+    <form action={% url "home_page" %} method="GET">
+        {% csrf_token %}
+        <input type="submit" value="Go home">
+    </form>
+{% endblock %}

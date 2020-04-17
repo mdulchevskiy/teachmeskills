@@ -69,3 +69,15 @@ for j in range(m):
         max_column_sum = column_sum
         max_column_sum_index = j
 print(max_column_sum_index)
+
+# 7. Найти индекс ряда с минимальной суммой элементов.
+min_row_sum = None
+min_row_sum_index = None
+for i in range(n):
+    row_sum = 0
+    for j in range(m):
+        row_sum += matrix[i][j]
+    if min_row_sum is None or min_row_sum > row_sum:
+        min_row_sum = row_sum
+        min_row_sum_index = i
+print(min_row_sum_index)

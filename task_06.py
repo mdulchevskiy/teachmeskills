@@ -133,3 +133,12 @@ for i in range(n):
         row.append(matrix_a[i][j] + matrix_b[i][j])
     sum_matrix.append(row)
 print(sum_matrix)
+
+# 13. Создать матрицу равную разности matrix_a и matrix_b.
+diff_matrix = []
+for i in range(n):
+    row = []
+    for j in range(m):
+        row.append(matrix_a[i][j] - matrix_b[i][j])
+    diff_matrix.append(row)
+print(diff_matrix)

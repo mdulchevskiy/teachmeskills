@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home page
+{% endblock %}
+
+{% block head %}
+<style>
+    TABLE {
+        border-collapse: collapse;
+        border: 2px solid white;
+    }
+    TD, TH {
+        padding: 3px;
+        border: 1px solid black;
+    }
+    .col1 {
+        width: 20px;
+        text-align: center;
+    }
+    .col2 {
+        width: 60px;
+    }
+    .col3 {
+        width: 60px;
+    }
+    .col4 {
+        width: 30px;
+    }
+    .col5 {
+        width: 100px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <hr><h2>Home page.</h2><hr>
+
+    {% if message %}
+        {{ message }}
+    {% endif %}
+
+    <form>
+        <p><button formaction="{% url 'add_user' %}">Add user</button></p>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Age</th>
+                <th>Profession</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td class="col1"><a href="{% url 'detail_user' user_id=user.id %}">{{ user.id }}</a></td>
+                    <td class="col2">{{ user.firstname }}</td>
+                    <td class="col3">{{ user.lastname }}</td>
+                    <td class="col4">{{ user.age }}</td>
+                    <td class="col5">{{ user.profession }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p>* to edit or delete user click on the ID</p>
+{% endblock %}

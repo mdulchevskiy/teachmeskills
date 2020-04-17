@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Edit user
+{% endblock %}
+
+{% block content %}
+    {% if errors %}
+        {{ errors }}
+    {% endif %}
+
+    <form method="POST" action="{% url 'edit_user' user_id=user_id%}" novalidate>
+        {{ form.as_p }}
+        <input type="submit" value="Confirm">
+        <button formaction="{% url 'detail_user' user_id=user_id %}">Cancel</button>
+    </form>
+{% endblock %}

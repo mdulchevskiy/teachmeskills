@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detail user
+{% endblock %}
+
+{% block head %}
+<style>
+    .lc {font-weight: bold}
+</style>
+{% endblock %}
+
+{% block content %}
+    <hr><h2>User ID:{{ user.id }} info.</h2><hr>
+
+    <p><table>
+        <tbody>
+            <tr>
+                <td class="lc">ID:</td>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <td class="lc">Firstname:</td>
+                <td>{{ user.firstname }}</td>
+            </tr>
+            <tr>
+                <td class="lc">Lastname:</td>
+                <td>{{ user.lastname }}</td>
+            </tr>
+            <tr>
+                <td class="lc">Age:</td>
+                <td>{{ user.age }}</td>
+            </tr>
+            <tr>
+                <td class="lc">Profession:</td>
+                <td>{{ user.profession }}</td>
+            </tr>
+        </tbody>
+    </table></p>
+
+    <form method="POST">
+        <button formaction="{% url 'edit_user' user_id=user.id %}" formmethod="GET">Edit</button>
+        <button formaction="{% url 'delete_user' user_id=user.id %}">Delete</button>
+        <button formaction="{% url 'home_page' %}">Cancel</button>
+    </form>
+{% endblock %}

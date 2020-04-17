@@ -100,3 +100,10 @@ for i in range(n):
         if i < j:
             matrix[i][j] = 0
 print(matrix)
+
+# 10. Обнулить все элементы ниже главной диагонали.
+for i in range(n):
+    for j in range(m):
+        if i > j:
+            matrix[i][j] = 0
+print(matrix)

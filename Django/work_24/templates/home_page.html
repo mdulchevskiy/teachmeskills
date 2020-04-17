@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Work 24
+{% endblock %}
+
+{% block content %}
+    <form action={% url 'get_image' %} method="post">
+        {% csrf_token %}
+        <input type="submit" value="I love cats!" name="button"></p>
+        <input type="submit" value="I love dogs!" name="button"></p>
+    </form>
+
+    <form action={% url 'send_email' %} method="get">
+        <input type="submit" value="Send email">
+    </form>
+{% endblock %}

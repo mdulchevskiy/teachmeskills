@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Work 24
+{% endblock %}
+
+{% block content %}
+    <img src="{{ image }}" alt="{{ image }}" height="500px">
+
+    <form action={% url 'home_page' %} method="get">
+        {% csrf_token %}
+        <input type="submit" value="Go home">
+    </form>
+
+    <form action={% url 'save_image' %} method="post">
+        {% csrf_token %}
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}

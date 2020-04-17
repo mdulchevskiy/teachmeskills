@@ -93,3 +93,10 @@ for j in range(m):
         min_column_sum = column_sum
         min_column_sum_index = j
 print(min_column_sum_index)
+
+# 9. Обнулить все элементы выше главной диагонали.
+for i in range(n):
+    for j in range(m):
+        if i < j:
+            matrix[i][j] = 0
+print(matrix)

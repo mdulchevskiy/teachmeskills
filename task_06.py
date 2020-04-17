@@ -81,3 +81,15 @@ for i in range(n):
         min_row_sum = row_sum
         min_row_sum_index = i
 print(min_row_sum_index)
+
+# 8. Найти индекс колонки с минимальной суммой элементов.
+min_column_sum = None
+min_column_sum_index = None
+for j in range(m):
+    column_sum = 0
+    for i in range(n):
+        column_sum += matrix[i][j]
+    if min_column_sum is None or min_column_sum > column_sum:
+        min_column_sum = column_sum
+        min_column_sum_index = j
+print(min_column_sum_index)

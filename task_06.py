@@ -124,3 +124,12 @@ for i in range(n):
         row.append(randint(a, b))
     matrix_b.append(row)
 print(matrix_b)
+
+# 12. Создать матрицу равную сумме matrix_a и matrix_b.
+sum_matrix = []
+for i in range(n):
+    row = []
+    for j in range(m):
+        row.append(matrix_a[i][j] + matrix_b[i][j])
+    sum_matrix.append(row)
+print(sum_matrix)
